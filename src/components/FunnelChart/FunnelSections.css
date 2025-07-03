@@ -1,15 +1,17 @@
 /* Funnel Sections Container */
 .funnel-sections-container {
-  padding: 2rem 0;
+  display: flex;
+  padding: 0;
   background-color: #ffffff;
 }
 
 /* Funnel Sections Grid */
 .funnel-sections-grid {
   display: grid;
+  margin: auto 0;
+  width: 100%;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  margin-bottom: 1rem;
   background-color: #ffffff;
 }
 

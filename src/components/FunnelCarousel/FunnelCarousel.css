@@ -1,64 +1,350 @@
-.funnel-carousel {
-  width: 100%;
+/* Full-width carousel container */
+.full-width-carousel {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  position: relative;
   background: #ffffff;
+  min-height: 500px;
 }
 
-/* Phase Navigation */
-.phase-navigation {
+/* Main carousel track */
+.carousel-track {
+  display: grid;
+  grid-template-columns: 250px 1fr 250px;
+  gap: 24px;
+  align-items: center;
+  max-width: calc(1600px + 500px + 48px); /* Limitar ancho total */
+  margin: 0 auto; /* Centrar en la página */
+  padding: 0 1.5rem; /* Padding lateral */
+  transition: all 0.5s ease;
+}
+
+/* Cuando Pre está activo */
+.carousel-track.pre-active {
+  grid-template-columns: 1fr 250px 250px;
+  transform: translateX(274px);
+}
+
+/* Cuando Post está activo */
+.carousel-track.post-active {
+  grid-template-columns: 250px 250px 1fr;
+  transform: translateX(-274px);
+}
+
+/* Panel inner containers */
+.panel-inner {
   display: flex;
+  justify-content: center;
+  align-items: stretch;
+  transition: all 0.5s ease;
   position: relative;
-  border-bottom: 1px solid #e5e7eb;
-  margin-bottom: 2rem;
+  overflow: visible;
+  min-height: 500px;
 }
 
-.phase-tab {
-  flex: 1;
-  padding: 1rem 2rem;
-  background: none;
-  border: none;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #6b7280;
-  cursor: pointer;
-  transition: color 0.2s ease;
-  text-align: center;
+/* Center inner container for alignment */
+.center-inner {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: visible;
+  min-height: 500px;
 }
 
-.phase-tab:hover {
-  color: #374151;
+/* Animación para contenido que aparece */
+.content-fade-in {
+  animation: contentFadeIn 0.4s ease-in-out forwards;
+  opacity: 0;
 }
 
-.phase-tab.active {
-  color: #111827;
-  font-weight: 600;
+@keyframes contentFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.active-indicator {
+/* Contenedores de contenido con posición absoluta para transiciones suaves */
+.content-container {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
   position: absolute;
-  bottom: -1px;
+  top: 0;
   left: 0;
-  width: 33.333%;
-  height: 2px;
-  background: #111827;
-  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  transition: opacity 0.3s ease;
+  overflow: visible;
 }
 
-/* Phase Content */
-.carousel-content {
+.content-container.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.content-container.inactive {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Para garantizar que el contenedor padre tiene altura suficiente */
+.content-wrapper {
   position: relative;
-  min-height: 400px;
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+  overflow: visible;
 }
 
-.phase-section {
+/* Side panels */
+.side-panel {
+  height: auto;
+  margin: auto;
+  min-height: 300px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.side-panel:hover {
+  background: #f1f5f9;
+  transform: scale(1.02);
+}
+
+.side-panel.active {
+  background: #e2e8f0;
+  border-color: #cbd5e0;
+}
+
+/* Panel content */
+.panel-content {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.panel-content h3 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.panel-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel-section {
+  margin-bottom: 0.75rem;
+}
+
+.panel-section-title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+  text-align: left;
+}
+
+/* Mini charts containers */
+.mini-chart-container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.mini-donut-container {
+  height: 60px;
+  width: 60px;
+}
+
+.chart-legend {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.75rem;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Leyenda específica para gráficos expandidos alineada a la izquierda */
+.right-chart .chart-legend {
+  justify-content: flex-start;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.legend-color {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.25rem;
+}
+
+.user-color {
+  background-color: #4299e1;
+}
+
+.bot-color {
+  background-color: #e2e8f0;
+}
+
+/* Channels pills */
+.channels-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  justify-content: center;
+}
+
+.channel-pill {
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.675rem;
+  white-space: nowrap;
+  color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.organic-pill {
+  background-color: #2b6cb0;
+}
+
+.google-pill {
+  background-color: #4299e1;
+}
+
+.newsletter-pill {
+  background-color: #63b3ed;
+}
+
+.push-pill {
+  background-color: #90cdf4;
+  color: #2d3748;
+}
+
+/* Center content - maintains container alignment */
+.center-content {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  overflow: visible;
+}
+
+/* Ensure funnel content takes full available space */
+.center-content > * {
+  width: 100%;
+  flex: 1 0 auto;
+  overflow: visible;
+}
+
+/* Phase content styles */
+.phase-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Pre-analysis expanded layout */
+.pre-analysis-expanded {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 4rem;
+  align-items: flex-start;
+  min-width: 100%;
+  max-width: 1400px;
+  padding: 1rem;
+}
+
+.left-chart,
+.right-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
 }
 
-.phase-section.inactive {
-  display: none;
+/* Estilos más sutiles para la sección Pre */
+.left-chart .stage-header,
+.right-chart .stage-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 3rem;
+  width: 100%;
 }
 
-.phase-section.active {
-  animation: fadeIn 0.3s ease-in-out;
+.left-chart .title-section,
+.right-chart .title-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.left-chart .stage-icon,
+.right-chart .stage-icon {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.left-chart .stage-title,
+.right-chart .stage-title {
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+  text-transform: none;
+}
+
+.left-chart .stage-value,
+.right-chart .stage-value {
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #374151;
+  margin: 0;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 }
 
 @keyframes fadeIn {
@@ -72,7 +358,7 @@
   }
 }
 
-/* Pre-analysis content */
+/* Pre-analysis metrics grid */
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -104,7 +390,7 @@
   text-align: center;
 }
 
-/* Post-analysis content */
+/* Post-analysis coming soon */
 .coming-soon {
   display: flex;
   flex-direction: column;
@@ -126,10 +412,62 @@
 }
 
 /* Responsive design */
+@media (max-width: 1024px) {
+  .carousel-track {
+    grid-template-columns: 200px 1fr 200px;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    max-width: 1200px;
+  }
+
+  .side-panel {
+    min-height: 250px;
+  }
+
+  .panel-content {
+    padding: 1rem;
+  }
+
+  .panel-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .panel-metric .value {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .phase-tab {
-    padding: 0.75rem 1rem;
+  .carousel-track {
+    grid-template-columns: 120px 1fr 120px;
+    gap: 1rem;
+    padding: 0 1rem;
+    max-width: 768px;
+  }
+
+  .side-panel {
+    min-height: 200px;
+  }
+
+  .center-content {
+    min-height: 400px;
+  }
+
+  .panel-content {
+    padding: 0.5rem;
+  }
+
+  .panel-content h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .panel-metric .value {
     font-size: 0.875rem;
+  }
+
+  .panel-metric .label {
+    font-size: 0.75rem;
   }
 
   .metrics-grid {
@@ -147,6 +485,33 @@
 }
 
 @media (max-width: 480px) {
+  .carousel-track {
+    grid-template-columns: 80px 1fr 80px;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+    max-width: 480px;
+  }
+
+  .side-panel {
+    min-height: 150px;
+  }
+
+  .panel-content {
+    padding: 0.25rem;
+  }
+
+  .panel-content h3 {
+    font-size: 0.875rem;
+  }
+
+  .panel-metric .value {
+    font-size: 0.75rem;
+  }
+
+  .panel-metric .label {
+    font-size: 0.625rem;
+  }
+
   .metrics-grid {
     grid-template-columns: 1fr;
   }
