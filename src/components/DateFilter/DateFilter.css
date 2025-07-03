@@ -1,0 +1,68 @@
+.date-filter-container {
+  padding: 1rem;
+  background-color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.date-filter-header {
+  margin-bottom: 1rem;
+}
+
+.date-filter-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+  color: #2d3748;
+}
+
+.date-filter-options {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.date-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  background-color: transparent;
+  color: #2d3748;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.date-btn.active {
+  background-color: #2d3748;
+  color: #ffffff;
+  border-color: #2d3748;
+}
+
+.date-btn:hover {
+  background-color: #f7fafc;
+  border-color: #cbd5e0;
+}
+
+.date-btn.active:hover {
+  background-color: #1a202c;
+  border-color: #1a202c;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .date-filter-options {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .date-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .date-filter-title {
+    font-size: 1rem;
+    text-align: center;
+  }
+}

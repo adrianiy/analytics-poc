@@ -1,0 +1,171 @@
+.analysis-navigator {
+  width: 100%;
+  padding: 24px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.analysis-phases {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.analysis-phase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 24px;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 160px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.analysis-phase:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #e2e8f0;
+}
+
+.analysis-phase.active {
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(78, 205, 196, 0.3);
+  border-color: transparent;
+}
+
+.analysis-phase.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f8fafc;
+}
+
+.analysis-phase.disabled:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.phase-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  filter: grayscale(0);
+  transition: filter 0.3s ease;
+}
+
+.analysis-phase.disabled .phase-icon {
+  filter: grayscale(1);
+}
+
+.phase-content {
+  text-align: center;
+}
+
+.phase-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: inherit;
+}
+
+.phase-subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+  color: inherit;
+}
+
+.coming-soon {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #fbbf24;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.phase-connector {
+  display: flex;
+  align-items: center;
+  margin: 0 -10px;
+}
+
+.connector-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #e2e8f0 0%, #cbd5e1 50%, #e2e8f0 100%);
+  border-radius: 1px;
+}
+
+.connector-arrow {
+  font-size: 18px;
+  color: #64748b;
+  margin-left: -12px;
+  background: white;
+  padding: 0 4px;
+  font-weight: 300;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .analysis-phases {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .analysis-phase {
+    min-width: 200px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .phase-connector {
+    transform: rotate(90deg);
+    margin: -10px 0;
+  }
+
+  .connector-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* Animation for phase transitions */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.analysis-phase {
+  animation: slideIn 0.5s ease-out;
+}
+
+.analysis-phase:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.analysis-phase:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.analysis-phase:nth-child(5) {
+  animation-delay: 0.3s;
+}

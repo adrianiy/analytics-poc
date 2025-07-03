@@ -1,0 +1,78 @@
+/* Funnel Sections Container */
+.funnel-sections-container {
+  padding: 2rem 0;
+  background-color: #ffffff;
+}
+
+/* Funnel Sections Grid */
+.funnel-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+}
+
+.funnel-section {
+  min-height: 320px;
+  transition: all 0.3s ease;
+}
+
+.funnel-section:hover {
+  background-color: #f8fafc;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1200px) {
+  .funnel-sections-container {
+    padding: 1.5rem 0;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .funnel-section {
+    min-height: 220px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .funnel-sections-container {
+    padding: 1rem 0;
+  }
+
+  .funnel-section {
+    min-height: 200px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .funnel-sections-container {
+    padding: 0.5rem 0;
+  }
+
+  .funnel-section {
+    min-height: 180px;
+  }
+}
+
+/* Animation for section transitions */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.funnel-section {
+  animation: fadeInScale 0.3s ease-out;
+}
+
+/* Focus states for accessibility */
+.funnel-section:focus {
+  outline: 2px solid #4299e1;
+  outline-offset: 2px;
+}

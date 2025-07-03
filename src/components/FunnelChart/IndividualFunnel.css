@@ -1,0 +1,428 @@
+/* Individual Funnel Container */
+.individual-funnel-container {
+  position: relative;
+  height: 100%;
+  background-color: transparent;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.individual-funnel-container .chart-container {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.individual-funnel-container:hover .chart-container,
+.individual-funnel-container.active .chart-container {
+  opacity: 0.8;
+}
+
+.individual-funnel-container.active .legend {
+  display: grid;
+}
+
+/* Data Container */
+.data-container {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+/* Stage Header */
+.stage-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stage-icon {
+  color: #4f46e5;
+  flex-shrink: 0;
+}
+
+.stage-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1f2937;
+  margin: 0;
+  text-transform: none;
+}
+
+.stage-value {
+  font-weight: 700;
+  font-size: 1.875rem;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Conversion Section */
+.conversion-section {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.5rem;
+}
+
+.conversion-icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.conversion-rate {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #111827;
+}
+
+.conversion-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+/* Conversion Placeholder */
+.conversion-placeholder {
+  height: 1.25rem; /* Same height as conversion-section */
+  margin-top: 0.5rem;
+}
+
+/* Legacy styles for backward compatibility */
+.data-container h2 {
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 1.75rem;
+  margin-right: 0.75rem;
+  color: #1a202c;
+}
+
+.data-container h3 {
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 1rem;
+  white-space: nowrap;
+  color: #4a5568;
+  margin: 0;
+}
+
+.data-container h4 {
+  position: absolute;
+  top: 32px;
+  font-weight: 500;
+  color: #718096;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.data-container h4 .small {
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* Layout utilities */
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.row.spaced {
+  justify-content: space-between;
+}
+
+.row.middle {
+  align-items: center;
+}
+
+.row.baseline {
+  align-items: baseline;
+}
+
+/* Chart Container */
+.chart-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* Legend */
+.legend {
+  margin-top: 1rem;
+  opacity: 0.7;
+  width: 100%;
+  overflow: hidden;
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 0.75rem;
+}
+
+.legend .item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend .item .circle {
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+  flex-shrink: 0;
+}
+
+.device-icon {
+  color: #4a5568;
+  flex-shrink: 0;
+}
+
+.legend .item em {
+  font-size: 1rem;
+  color: #4a5568;
+  opacity: 0.7;
+  font-style: normal;
+}
+
+.legend .item span {
+  font-size: 0.875rem;
+  color: #1a202c;
+  font-weight: 500;
+}
+
+.legend .item span.small {
+  margin-right: 0.25rem;
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+.legend .caption {
+  opacity: 0.8;
+  font-size: 0.75rem;
+  color: #718096;
+  text-transform: capitalize;
+}
+
+/* Active state */
+.individual-funnel-container.active {
+  background-color: #f8fafc;
+}
+
+/* Hover effects */
+.individual-funnel-container:hover .legend {
+  display: grid;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1700px) {
+  .legend {
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  }
+
+  .legend .item em {
+    display: block;
+    font-size: 1rem;
+    margin-right: 0.25rem;
+    color: #4a5568;
+    opacity: 0.7;
+  }
+
+  .legend .caption {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .stage-value {
+    font-size: 1.5rem;
+  }
+
+  .stage-title {
+    font-size: 0.875rem;
+  }
+
+  .stage-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Legacy styles */
+  .data-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .data-container h3 {
+    font-size: 0.875rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .individual-funnel-container {
+    padding: 1rem;
+  }
+
+  .stage-value {
+    font-size: 1.25rem;
+  }
+
+  .stage-title {
+    font-size: 0.75rem;
+  }
+
+  .stage-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .conversion-section {
+    gap: 0.25rem;
+  }
+
+  .conversion-rate {
+    font-size: 0.75rem;
+  }
+
+  .conversion-label {
+    font-size: 0.625rem;
+  }
+
+  .conversion-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .conversion-placeholder {
+    height: 1rem;
+  }
+
+  /* Legacy styles */
+  .data-container h2 {
+    font-size: 1.25rem;
+  }
+
+  .data-container h3 {
+    font-size: 0.75rem;
+  }
+
+  .data-container h4 {
+    font-size: 0.75rem;
+    top: 28px;
+  }
+
+  .legend {
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    grid-column-gap: 1rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .individual-funnel-container {
+    padding: 0.75rem;
+  }
+
+  .stage-header {
+    gap: 0.125rem;
+  }
+
+  .title-section {
+    gap: 0.375rem;
+  }
+
+  .stage-value {
+    font-size: 1rem;
+  }
+
+  .stage-title {
+    font-size: 0.625rem;
+  }
+
+  .stage-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .conversion-section {
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+  }
+
+  .conversion-rate {
+    font-size: 0.625rem;
+  }
+
+  .conversion-label {
+    font-size: 0.5rem;
+  }
+
+  .conversion-icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .conversion-placeholder {
+    height: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  /* Legacy styles */
+  .data-container h2 {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
+
+  .data-container h3 {
+    font-size: 0.625rem;
+  }
+
+  .data-container h4 {
+    font-size: 0.625rem;
+    top: 24px;
+  }
+
+  .chart-container {
+    margin-bottom: 0.5rem;
+  }
+
+  .legend {
+    margin-top: 0.5rem;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
+  }
+
+  .legend .item {
+    gap: 0.25rem;
+  }
+
+  .legend .item em {
+    font-size: 0.875rem;
+  }
+
+  .legend .item span {
+    font-size: 0.75rem;
+  }
+
+  .legend .item span.small {
+    font-size: 0.625rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .individual-funnel-container {
+    padding: 0.5rem;
+  }
+
+  .data-container {
+    margin-bottom: 0.5rem;
+  }
+
+  .chart-container {
+    margin-bottom: 0.25rem;
+  }
+
+  .legend {
+    margin-top: 0.25rem;
+  }
+}

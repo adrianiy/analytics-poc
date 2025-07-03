@@ -1,0 +1,135 @@
+.product-ranking-container {
+  padding: 1rem;
+  background-color: #ffffff;
+}
+
+.product-ranking-title {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.5px;
+  color: #2d3748;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  background-color: #fafafa;
+}
+
+.product-image-container {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  width: 100%;
+  background-color: #f8fafc;
+  position: relative;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+/* Sessions overlay - top of image */
+.product-sessions-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #374151;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  z-index: 2;
+}
+
+.sessions-icon {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.sessions-count {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+/* Product name overlay - bottom of image */
+.product-name-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 24px 12px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  z-index: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-name-overlay {
+  opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  /* Mobile overlay adjustments */
+  .product-sessions-overlay {
+    top: 6px;
+    right: 6px;
+    padding: 6px 8px;
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  .sessions-icon {
+    font-size: 0.8rem;
+  }
+
+  .sessions-count {
+    font-size: 0.75rem;
+  }
+
+  .product-name-overlay {
+    padding: 16px 8px 8px;
+    font-size: 0.7rem;
+  }
+}
